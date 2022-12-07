@@ -1,0 +1,29 @@
+<!doctype html>
+<title>Chest X-ray covid test</title>
+<h2>Machine learning for Covid classification</h2>
+
+<h3>Model ROC curve</h3>
+<div>
+	<img src="{{ url_for('static', filename='roc_curve/roc.png')  }}">
+</div>
+
+<h3>Select a Chest X-ray image to upload</h3>
+<form method="post" action="/home" enctype="multipart/form-data">
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+</form>
+
+
+
+
+{% if filename %}
+    <p>Covid result and probability: {{ val }}</p>
+<h3>Uploaded image</h3>
+	<div>
+		<img src="{{ url_for('static', filename='Images/'+filename) }}">
+	</div>
+{% endif %}
